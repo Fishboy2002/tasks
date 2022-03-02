@@ -1,6 +1,12 @@
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./App.css";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
 
 function App(): JSX.Element {
     return (
@@ -12,44 +18,18 @@ function App(): JSX.Element {
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
-            <p>Hello World</p>
-            <p>Sean Williams</p>
-            <h1>Task 3 Stuff:</h1>
-            <img
-                src="https://i.pinimg.com/originals/78/09/94/780994928b848b937791d382de43ef75.jpg"
-                alt="Fox jumping in snow"
-            />
-            <ol>
-                <li>I dont know what to put here</li>
-                <li>Foxes are cute</li>
-                <li>Filler Text</li>
-            </ol>
-            <Button onClick={() => console.log("Hello World!")}>
-                Log Hello World
-            </Button>
-            <Container>
-                <Row>
-                    <Col>
-                        <div
-                            style={{
-                                width: "500px",
-                                height: "200px",
-                                backgroundColor: "red"
-                            }}
-                        ></div>
-                    </Col>
-                    <Col>
-                        Small Rectangle
-                        <div
-                            style={{
-                                width: "500px",
-                                height: "100px",
-                                backgroundColor: "red"
-                            }}
-                        ></div>
-                    </Col>
-                </Row>
-            </Container>
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <StartAttempt></StartAttempt>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr />
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
