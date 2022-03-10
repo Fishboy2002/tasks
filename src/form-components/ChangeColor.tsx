@@ -23,13 +23,14 @@ export function ChangeColor(): JSX.Element {
                     key={val}
                     inline
                     type="radio"
-                    name={val}
+                    name="colors"
                     id="pick-color"
-                    label={val}
-                    style={{ backgroundColor: val }}
+                    label={<span style={{ backgroundColor: val }}>{val}</span>}
                     value={val}
                     checked={color === val}
-                    onChange={() => setColor(val)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setColor(e.target.value)
+                    }
                 ></Form.Check>
             ))}
             <div>
