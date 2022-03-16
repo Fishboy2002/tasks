@@ -43,7 +43,7 @@ function App(): JSX.Element {
                 Show Previous Task Components
             </button>
             Currently: {oldTasks.toString()}
-            {oldTasks ? (
+            {oldTasks && (
                 <div>
                     <hr></hr>
                     <CheckAnswer expectedAnswer="42"></CheckAnswer>
@@ -79,8 +79,6 @@ function App(): JSX.Element {
                     <hr />
                     <CycleHoliday></CycleHoliday>
                 </div>
-            ) : (
-                <div></div>
             )}
         </div>
     );
