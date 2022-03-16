@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react"; //Add use State back later
 import { QuestionType } from "../interfaces/question";
 
 interface takeQuizProp {
@@ -14,6 +14,7 @@ export function TakeQuiz({
     questionList,
     setCurrQuiz
 }: takeQuizProp): JSX.Element {
+    questionList[0]; //Remove later
     return (
         <div>
             {printQuestions}

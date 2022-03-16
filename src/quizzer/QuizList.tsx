@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { QuestionType } from "../interfaces/question";
 import { Quiz } from "./Quizzer";
 
 interface setQuizProp {

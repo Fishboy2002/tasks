@@ -16,7 +16,7 @@ import { EditMode } from "./form-components/EditMode";
 import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion";
 import { ChangeColor } from "./form-components/ChangeColor";
 import { Quizzer } from "./quizzer/Quizzer";
-import ApplicationSketch from "./assets/sketch.png";
+//import ApplicationSketch from "./assets/sketch.png";
 
 function App(): JSX.Element {
     const [oldTasks, setOldTasks] = useState<boolean>(false);
