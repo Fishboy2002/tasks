@@ -47,6 +47,7 @@ function App(): JSX.Element {
                     When taking a quiz, you can see a list of the current
                     Questions
                 </li>
+                <li>Score is visible, but cannot be increased yet</li>
                 <li>
                     Quiz questions can be either multiple choice or short answer
                 </li>
