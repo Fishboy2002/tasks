@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 import { Quiz } from "./Quizzer";
 
 interface setQuizProp {
@@ -6,13 +7,17 @@ interface setQuizProp {
     quizes: Quiz[];
     setCurrQuiz: (newQuiz: number) => void;
     setQuizes: (newQuizes: Quiz[]) => void;
+    score: number;
 }
 export function QuizList({
     quizes,
     setCurrQuiz,
-    setQuizes
+    setQuizes,
+    score
 }: setQuizProp): JSX.Element {
     const [edit, setEdit] = useState<boolean>(false);
+    const [title, setTitle] = useState<string>("");
+    const [discription, setDiscription] = useState<string>("");
 
     function remove_Quiz(quiz: Quiz): void {
         setQuizes(quizes.filter((item: Quiz): boolean => item != quiz));
@@ -50,9 +55,50 @@ export function QuizList({
             </div>
         );
     }
+    function add_Quiz(): JSX.Element {
+        return (
+            <div>
+                <Form.Group controlId="formQuizTitle">
+                    <Form.Label>Title:</Form.Label>
+                    <Form.Control
+                        value={title}
+                        onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                        ) => setTitle(event.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group controlId="formQuizDiscription">
+                    <Form.Label>Discription:</Form.Label>
+                    <Form.Control
+                        value={discription}
+                        onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                        ) => setDiscription(event.target.value)}
+                    />
+                </Form.Group>
+                <button
+                    onClick={() =>
+                        setQuizes([
+                            ...quizes,
+                            {
+                                title: title,
+                                discription: discription,
+                                length: 0,
+                                questions: []
+                            }
+                        ])
+                    }
+                >
+                    Add Quiz
+                </button>
+            </div>
+        );
+    }
     return (
         <div>
+            <h3>You have currently scored {score} points</h3>
             {quizes.map((quiz: Quiz): JSX.Element => print_Quiz(quiz))}
+            {edit && add_Quiz()}
             <div>
                 <button onClick={() => setEdit(!edit)}>Edit Mode</button>
             </div>

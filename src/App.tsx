@@ -37,7 +37,21 @@ function App(): JSX.Element {
                     List of Quizes is displayed with all required information
                 </li>
                 <li>Quizes can be deleted</li>
+                <li>Quizes can be added</li>
+                <li>
+                    Quizes are displayed with their title, description, and
+                    number of questions
+                </li>
                 <li>You can start taking a quiz</li>
+                <li>
+                    When taking a quiz, you can see a list of the current
+                    Questions
+                </li>
+                <li>Score is visible, but cannot be increased yet</li>
+                <li>
+                    Quiz questions can be either multiple choice or short answer
+                </li>
+                <li>You can add Questions</li>
             </ul>
             <button onClick={() => setOldTasks(!oldTasks)}>
                 Show Previous Task Components
