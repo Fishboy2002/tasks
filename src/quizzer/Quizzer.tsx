@@ -12,10 +12,21 @@ export interface Quiz {
 
 const INITIAL_QUIZES: Quiz[] = [
     {
-        title: "Test",
-        discription: "Simple Test for stuff",
-        length: 0,
-        questions: []
+        title: "Testing Quiz",
+        discription: "Test Quiz for Testing",
+        length: 1,
+        questions: [
+            {
+                id: 5,
+                name: "Test Question",
+                body: "Testing Purposes",
+                type: "multiple_choice_question",
+                options: [],
+                expected: "",
+                points: 1,
+                published: true
+            }
+        ]
     },
     {
         title: "Stuff",
