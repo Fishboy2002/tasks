@@ -29,24 +29,24 @@ PASS src/quizzer/Quizzer.test.tsx
       
       Check the render method of `QuizList`. See https://reactjs.org/link/warning-keys for more information.
           at div
-          at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:11:5)
+          at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:13:5)
           at div
           at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:29:33)
 
-      52 |     }
-      53 |     return (
-    > 54 |         <div>
-         |         ^
-      55 |             {quizes.map((quiz: Quiz): JSX.Element => print_Quiz(quiz))}
-      56 |             <div>
-      57 |                 <button onClick={() => setEdit(!edit)}>Edit Mode</button>
+       96 |     }
+       97 |     return (
+    >  98 |         <div>
+          |         ^
+       99 |             <h3>You have currently scored {score} points</h3>
+      100 |             {quizes.map((quiz: Quiz): JSX.Element => print_Quiz(quiz))}
+      101 |             {edit && add_Quiz()}
 
       at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
       at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
       at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
       at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
       at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
-      at QuizList (src/quizzer/QuizList.tsx:54:9)
+      at QuizList (src/quizzer/QuizList.tsx:98:9)
       at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
       at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
 
@@ -58,35 +58,35 @@ PASS src/App.test.tsx
       
       Check the render method of `QuizList`. See https://reactjs.org/link/warning-keys for more information.
           at div
-          at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:11:5)
+          at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:13:5)
           at div
           at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:29:33)
           at div
           at App (/home/runner/work/tasks/tasks/src/App.tsx:22:37)
 
-      52 |     }
-      53 |     return (
-    > 54 |         <div>
-         |         ^
-      55 |             {quizes.map((quiz: Quiz): JSX.Element => print_Quiz(quiz))}
-      56 |             <div>
-      57 |                 <button onClick={() => setEdit(!edit)}>Edit Mode</button>
+       96 |     }
+       97 |     return (
+    >  98 |         <div>
+          |         ^
+       99 |             <h3>You have currently scored {score} points</h3>
+      100 |             {quizes.map((quiz: Quiz): JSX.Element => print_Quiz(quiz))}
+      101 |             {edit && add_Quiz()}
 
       at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
       at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
       at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
       at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
       at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
-      at QuizList (src/quizzer/QuizList.tsx:54:9)
+      at QuizList (src/quizzer/QuizList.tsx:98:9)
       at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
       at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
 
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   94.97 |    95.34 |    92.7 |   95.23 |                   
+All files                    |   83.73 |    86.45 |   80.37 |   83.53 |                   
  src                         |   99.12 |    98.21 |   98.59 |   99.07 |                   
-  App.tsx                    |   66.66 |       50 |      50 |   66.66 | 42                
+  App.tsx                    |   66.66 |       50 |      50 |   66.66 | 56                
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
   functions.ts               |     100 |      100 |     100 |     100 |                   
   nested.ts                  |     100 |      100 |     100 |     100 |                   
@@ -112,14 +112,15 @@ All files                    |   94.97 |    95.34 |    92.7 |   95.23 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
- src/quizzer                 |   44.44 |       50 |   30.76 |   47.05 |                   
-  QuizList.tsx               |      40 |       50 |   33.33 |   44.44 | 18,30-43,57       
-  Quizzer.tsx                |     100 |       50 |     100 |     100 | 34                
-  TakeQuiz.tsx               |       0 |      100 |       0 |       0 | 10-21             
+ src/quizzer                 |   21.56 |    21.42 |   11.76 |      22 |                   
+  QuizList.tsx               |    37.5 |       50 |   23.07 |      40 | 23,35-81,103      
+  QuizQuestion.tsx           |       0 |      100 |       0 |       0 | 15-16             
+  Quizzer.tsx                |     100 |       50 |     100 |     100 | 35                
+  TakeQuiz.tsx               |       0 |        0 |       0 |       0 | 41-242            
 -----------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 21 passed, 21 total
 Tests:       135 passed, 135 total
 Snapshots:   0 total
-Time:        10.957 s
+Time:        11.126 s
 Ran all test suites.
