@@ -7,21 +7,7 @@ PASS src/arrays.test.ts
 PASS src/objects.test.ts
 PASS src/components/StartAttempt.test.tsx
 PASS src/components/TwoDice.test.tsx
-PASS src/form-components/MultipleChoiceQuestion.test.tsx
-PASS src/bad-components/ChooseTeam.test.tsx
-PASS src/bad-components/DoubleHalf.test.tsx
-PASS src/functions.test.ts
-PASS src/form-components/CheckAnswer.test.tsx
-PASS src/form-components/EditMode.test.tsx
-PASS src/components/ChangeType.test.tsx
-PASS src/components/CycleHoliday.test.tsx
-PASS src/form-components/GiveAttempts.test.tsx
-PASS src/form-components/ChangeColor.test.tsx
-PASS src/components/Counter.test.tsx
-PASS src/components/RevealAnswer.test.tsx
-PASS src/bad-components/ColoredBox.test.tsx
-PASS src/bad-components/ShoveBox.test.tsx
-PASS src/quizzer/Quizzer.test.tsx
+PASS src/quizzer/TakeQuiz.test.tsx
   ● Console
 
     console.error
@@ -31,7 +17,7 @@ PASS src/quizzer/Quizzer.test.tsx
           at div
           at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:13:5)
           at div
-          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:29:33)
+          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:40:33)
 
        96 |     }
        97 |     return (
@@ -50,6 +36,101 @@ PASS src/quizzer/Quizzer.test.tsx
       at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
       at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
 
+    console.error
+      Warning: Each child in a list should have a unique "key" prop.
+      
+      Check the render method of `TakeQuiz`. See https://reactjs.org/link/warning-keys for more information.
+          at div
+          at TakeQuiz (/home/runner/work/tasks/tasks/src/quizzer/TakeQuiz.tsx:228:5)
+          at div
+          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:40:33)
+
+      242 |     const [option, setOption] = useState<string>("");
+      243 |     return (
+    > 244 |         <div>
+          |         ^
+      245 |             {quizes[currQuiz].questions.map(
+      246 |                 (ques: Question): JSX.Element =>
+      247 |                     printQuestions(ques, score, setScore)
+
+      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
+      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
+      at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
+      at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
+      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
+      at TakeQuiz (src/quizzer/TakeQuiz.tsx:244:9)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+
+    console.error
+      Warning: Cannot update a component (`Quizzer`) while rendering a different component (`QuizQuestion`). To locate the bad setState() call inside `QuizQuestion`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
+          at QuizQuestion (/home/runner/work/tasks/tasks/src/quizzer/QuizQuestion.tsx:11:5)
+          at div
+          at div
+          at TakeQuiz (/home/runner/work/tasks/tasks/src/quizzer/TakeQuiz.tsx:228:5)
+          at div
+          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:40:33)
+
+      13 |     setScore
+      14 | }: quizQuestionProp): JSX.Element {
+    > 15 |     setScore(score);
+         |     ^
+      16 |     return (
+      17 |         <div>
+      18 |             This Question can not yet be taken. Ignore this: {ques.body[0]},{" "}
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at warnAboutRenderPhaseUpdatesInDEV (node_modules/react-dom/cjs/react-dom.development.js:24002:15)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21836:3)
+      at setScore (node_modules/react-dom/cjs/react-dom.development.js:16139:5)
+      at QuizQuestion (src/quizzer/QuizQuestion.tsx:15:5)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+
+PASS src/form-components/MultipleChoiceQuestion.test.tsx
+PASS src/bad-components/ChooseTeam.test.tsx
+PASS src/bad-components/DoubleHalf.test.tsx
+PASS src/quizzer/Quizzer.test.tsx
+  ● Console
+
+    console.error
+      Warning: Each child in a list should have a unique "key" prop.
+      
+      Check the render method of `QuizList`. See https://reactjs.org/link/warning-keys for more information.
+          at div
+          at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:13:5)
+          at div
+          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:40:33)
+
+       96 |     }
+       97 |     return (
+    >  98 |         <div>
+          |         ^
+       99 |             <h3>You have currently scored {score} points</h3>
+      100 |             {quizes.map((quiz: Quiz): JSX.Element => print_Quiz(quiz))}
+      101 |             {edit && add_Quiz()}
+
+      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:117:30)
+      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:93:5)
+      at validateExplicitKey (node_modules/react/cjs/react-jsx-dev-runtime.development.js:986:5)
+      at validateChildKeys (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1013:11)
+      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1174:15)
+      at QuizList (src/quizzer/QuizList.tsx:98:9)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+
+PASS src/functions.test.ts
+PASS src/form-components/CheckAnswer.test.tsx
+PASS src/form-components/EditMode.test.tsx
+PASS src/components/ChangeType.test.tsx
+PASS src/components/CycleHoliday.test.tsx
+PASS src/form-components/GiveAttempts.test.tsx
+PASS src/form-components/ChangeColor.test.tsx
+PASS src/components/Counter.test.tsx
+PASS src/components/RevealAnswer.test.tsx
+PASS src/bad-components/ColoredBox.test.tsx
+PASS src/bad-components/ShoveBox.test.tsx
 PASS src/App.test.tsx
   ● Console
 
@@ -60,7 +141,7 @@ PASS src/App.test.tsx
           at div
           at QuizList (/home/runner/work/tasks/tasks/src/quizzer/QuizList.tsx:13:5)
           at div
-          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:29:33)
+          at Quizzer (/home/runner/work/tasks/tasks/src/quizzer/Quizzer.tsx:40:33)
           at div
           at App (/home/runner/work/tasks/tasks/src/App.tsx:22:37)
 
@@ -84,9 +165,9 @@ PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   83.73 |    86.45 |   80.37 |   83.53 |                   
+All files                    |   96.83 |    97.91 |   95.59 |   97.13 |                   
  src                         |   99.12 |    98.21 |   98.59 |   99.07 |                   
-  App.tsx                    |   66.66 |       50 |      50 |   66.66 | 56                
+  App.tsx                    |   66.66 |       50 |      50 |   66.66 | 67                
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
   functions.ts               |     100 |      100 |     100 |     100 |                   
   nested.ts                  |     100 |      100 |     100 |     100 |                   
@@ -112,15 +193,15 @@ All files                    |   83.73 |    86.45 |   80.37 |   83.53 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
- src/quizzer                 |   21.56 |    21.42 |   11.76 |      22 |                   
-  QuizList.tsx               |    37.5 |       50 |   23.07 |      40 | 23,35-81,103      
-  QuizQuestion.tsx           |       0 |      100 |       0 |       0 | 15-16             
-  Quizzer.tsx                |     100 |       50 |     100 |     100 | 35                
-  TakeQuiz.tsx               |       0 |        0 |       0 |       0 | 41-242            
+ src/quizzer                 |   86.53 |      100 |   82.85 |   88.23 |                   
+  QuizList.tsx               |   81.25 |      100 |   76.92 |   86.66 | 23,35             
+  QuizQuestion.tsx           |     100 |      100 |     100 |     100 |                   
+  Quizzer.tsx                |     100 |      100 |     100 |     100 |                   
+  TakeQuiz.tsx               |    86.2 |      100 |      85 |    86.2 | 183,224-225,269   
 -----------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 21 passed, 21 total
-Tests:       135 passed, 135 total
+Test Suites: 22 passed, 22 total
+Tests:       148 passed, 148 total
 Snapshots:   0 total
-Time:        11.126 s
+Time:        13.901 s
 Ran all test suites.
