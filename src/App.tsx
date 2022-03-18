@@ -16,7 +16,7 @@ import { EditMode } from "./form-components/EditMode";
 import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion";
 import { ChangeColor } from "./form-components/ChangeColor";
 import { Quizzer } from "./quizzer/Quizzer";
-//import ApplicationSketch from "./assets/sketch.png";
+import ApplicationSketch from "./assets/Sketch.jpg";
 
 function App(): JSX.Element {
     const [oldTasks, setOldTasks] = useState<boolean>(false);
@@ -30,9 +30,9 @@ function App(): JSX.Element {
                 automatically reload.
             </p>
             <Quizzer></Quizzer>
-            {/*<img src={ApplicationSketch} alt="The sketch of the application" />*/}
             <h3>Completed Items</h3>
             <ul>
+                <li>Included Sketch below this List</li>
                 <li>
                     Quizes are displayed with their title, description, and
                     number of questions
@@ -64,6 +64,12 @@ function App(): JSX.Element {
                     information
                 </li>
             </ul>
+            {
+                <img
+                    src={ApplicationSketch}
+                    alt="The sketch of the application"
+                />
+            }
             <button onClick={() => setOldTasks(!oldTasks)}>
                 Show Previous Task Components
             </button>
