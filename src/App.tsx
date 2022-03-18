@@ -34,24 +34,35 @@ function App(): JSX.Element {
             <h3>Completed Items</h3>
             <ul>
                 <li>
-                    List of Quizes is displayed with all required information
-                </li>
-                <li>Quizes can be deleted</li>
-                <li>Quizes can be added</li>
-                <li>
                     Quizes are displayed with their title, description, and
                     number of questions
                 </li>
+                <li>Included Tests to check if quiz is displayed</li>
+                <li>Quizes can be deleted</li>
+                <li>Included Tests for Deleting Quizes</li>
+                <li>Quizes can be added</li>
+                <li>Included Tests for adding Quizes</li>
                 <li>You can start taking a quiz</li>
                 <li>
                     When taking a quiz, you can see a list of the current
                     Questions
                 </li>
+                <li>Included tests to check if questions are displayed</li>
                 <li>Score is visible, but cannot be increased yet</li>
+                <li>Added Test for checking if score is visible</li>
                 <li>
                     Quiz questions can be either multiple choice or short answer
                 </li>
+                <li>
+                    Included Test to check if questions can be either multiple
+                    choice or short answer
+                </li>
                 <li>You can add Questions</li>
+                <li>
+                    Included Test for adding a question and checking if it
+                    appears in the list of questions with the inputted
+                    information
+                </li>
             </ul>
             <button onClick={() => setOldTasks(!oldTasks)}>
                 Show Previous Task Components

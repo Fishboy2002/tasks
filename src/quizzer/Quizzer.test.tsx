@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { Quizzer } from "./Quizzer";
 import userEvent from "@testing-library/user-event";
 
-describe("Quizzer Tests", () => {
+describe("Quizzer and QuizList Tests", () => {
     beforeEach(() => {
         render(<Quizzer />);
     });
@@ -11,11 +11,12 @@ describe("Quizzer Tests", () => {
         // Up to you to decide what your tests are!
         // Add more tests, more components, more test files!
     });
+
     //Tests for testing QuizList
     test("The test quiz title is displayed", () => {
         expect(screen.getByText(/Testing Quiz/i)).toBeInTheDocument();
     });
-    test("The test quiz discription is displayed", () => {
+    test("The test quiz description is displayed", () => {
         expect(screen.getByText(/Test Quiz for Testing/i)).toBeInTheDocument();
     });
     test("The test quiz length is displayed", () => {
@@ -39,7 +40,7 @@ describe("Quizzer Tests", () => {
         });
         expect(deleteButton.length >= 1);
     });
-    test("When in edit mode, you can add a quiz with an inputed name and discription", () => {
+    test("When in edit mode, you can add a quiz with an inputed name and description", () => {
         const editButton = screen.getByRole("button", { name: /Edit Mode/i });
         editButton.click();
         const addButton = screen.getByRole("button", {
@@ -47,12 +48,10 @@ describe("Quizzer Tests", () => {
         });
         const titleBox = screen.getByRole("textbox", { name: /Title:/i });
         userEvent.type(titleBox, "Test2 Title");
-        const descBox = screen.getByRole("textbox", { name: /Discription:/i });
+        const descBox = screen.getByRole("textbox", { name: /description:/i });
         userEvent.type(descBox, "Test2 Desc");
         addButton.click();
         expect(screen.getByText(/Test2 Title/i)).toBeInTheDocument();
         expect(screen.getByText(/Test2 Desc/i)).toBeInTheDocument();
     });
-
-    //Test for testing TakeQuiz
 });

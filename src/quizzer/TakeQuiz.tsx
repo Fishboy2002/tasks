@@ -51,7 +51,15 @@ function printQuestions(
         </div>
     );
 }
-function addQuestionHelp(curr: Quiz, name: string, body: string): Quiz {
+function makeQuestion(
+    curr: Quiz,
+    name: string,
+    body: string,
+    type: QuestionType,
+    options: string[],
+    expected: string,
+    points: number
+): Quiz {
     return {
         ...curr,
         questions: [
@@ -60,14 +68,29 @@ function addQuestionHelp(curr: Quiz, name: string, body: string): Quiz {
                 id: 5,
                 name: name,
                 body: body,
-                type: "multiple_choice_question",
-                options: [],
-                expected: "",
-                points: 1,
+                type: type,
+                options: options,
+                expected: expected,
+                points: points,
                 published: true
             }
         ]
     };
+}
+function addQuestionHelp(
+    curr: Quiz,
+    name: string,
+    body: string,
+    type: QuestionType,
+    options: string[],
+    expected: string,
+    points: number,
+    currQuiz: number,
+    quizes: Quiz[]
+): Quiz {
+    return curr === quizes[currQuiz]
+        ? makeQuestion(curr, name, body, type, options, expected, points)
+        : curr;
 }
 function addQuestion({
     quizes,
@@ -116,7 +139,7 @@ function addQuestion({
                 />
             </Form.Group>
             <Form.Group controlId="formQuestionBody">
-                <Form.Label>Discription/Body:</Form.Label>
+                <Form.Label>Description/Body:</Form.Label>
                 <Form.Control
                     value={body}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -173,9 +196,17 @@ function addQuestion({
                     setQuizes(
                         quizes.map(
                             (curr: Quiz): Quiz =>
-                                curr === quizes[currQuiz]
-                                    ? addQuestionHelp(curr, name, body)
-                                    : curr
+                                addQuestionHelp(
+                                    curr,
+                                    name,
+                                    body,
+                                    type,
+                                    options,
+                                    expected,
+                                    points,
+                                    currQuiz,
+                                    quizes
+                                )
                         )
                     )
                 }
@@ -207,7 +238,7 @@ export function TakeQuiz({
     const [type, setType] = useState<QuestionType>("multiple_choice_question");
     const [options, setOptions] = useState<string[]>([]);
     const [expected, setExpected] = useState<string>("");
-    const [points, setPoints] = useState<number>(1);
+    const [points, setPoints] = useState<number>(0);
     const [option, setOption] = useState<string>("");
     return (
         <div>

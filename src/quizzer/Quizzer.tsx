@@ -5,7 +5,7 @@ import { TakeQuiz } from "./TakeQuiz";
 
 export interface Quiz {
     title: string;
-    discription: string;
+    description: string;
     length: number;
     questions: Question[];
 }
@@ -13,7 +13,7 @@ export interface Quiz {
 const INITIAL_QUIZES: Quiz[] = [
     {
         title: "Testing Quiz",
-        discription: "Test Quiz for Testing",
+        description: "Test Quiz for Testing",
         length: 1,
         questions: [
             {
@@ -30,7 +30,7 @@ const INITIAL_QUIZES: Quiz[] = [
     },
     {
         title: "Stuff",
-        discription: "Answer questions about stuff",
+        description: "Answer questions about stuff",
         length: 0,
         questions: []
     }

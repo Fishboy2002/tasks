@@ -15,7 +15,7 @@ export function QuizQuestion({
     setScore(score);
     return (
         <div>
-            This Question can not yet be taken. Ignore this: {ques.body},{" "}
+            This Question can not yet be taken. Ignore this: {ques.body[0]},{" "}
             {score}
         </div>
     );
