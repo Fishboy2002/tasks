@@ -5,21 +5,32 @@ import { TakeQuiz } from "./TakeQuiz";
 
 export interface Quiz {
     title: string;
-    discription: string;
+    description: string;
     length: number;
     questions: Question[];
 }
 
 const INITIAL_QUIZES: Quiz[] = [
     {
-        title: "Test",
-        discription: "Simple Test for stuff",
-        length: 0,
-        questions: []
+        title: "Testing Quiz",
+        description: "Test Quiz for Testing",
+        length: 1,
+        questions: [
+            {
+                id: 5,
+                name: "Test Question",
+                body: "Testing Purposes",
+                type: "multiple_choice_question",
+                options: [],
+                expected: "",
+                points: 1,
+                published: true
+            }
+        ]
     },
     {
         title: "Stuff",
-        discription: "Answer questions about stuff",
+        description: "Answer questions about stuff",
         length: 0,
         questions: []
     }

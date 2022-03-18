@@ -17,7 +17,7 @@ export function QuizList({
 }: setQuizProp): JSX.Element {
     const [edit, setEdit] = useState<boolean>(false);
     const [title, setTitle] = useState<string>("");
-    const [discription, setDiscription] = useState<string>("");
+    const [description, setdescription] = useState<string>("");
 
     function remove_Quiz(quiz: Quiz): void {
         setQuizes(quizes.filter((item: Quiz): boolean => item != quiz));
@@ -37,7 +37,7 @@ export function QuizList({
                             Delete Quiz
                         </button>
                     )}{" "}
-                    Discription: {quiz.discription}
+                    description: {quiz.description}
                 </div>
                 <div>Total number of Questions: {quiz.length}</div>
                 <button
@@ -67,13 +67,13 @@ export function QuizList({
                         ) => setTitle(event.target.value)}
                     />
                 </Form.Group>
-                <Form.Group controlId="formQuizDiscription">
-                    <Form.Label>Discription:</Form.Label>
+                <Form.Group controlId="formQuizdescription">
+                    <Form.Label>description:</Form.Label>
                     <Form.Control
-                        value={discription}
+                        value={description}
                         onChange={(
                             event: React.ChangeEvent<HTMLInputElement>
-                        ) => setDiscription(event.target.value)}
+                        ) => setdescription(event.target.value)}
                     />
                 </Form.Group>
                 <button
@@ -82,7 +82,7 @@ export function QuizList({
                             ...quizes,
                             {
                                 title: title,
-                                discription: discription,
+                                description: description,
                                 length: 0,
                                 questions: []
                             }
