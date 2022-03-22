@@ -63,6 +63,8 @@ function App(): JSX.Element {
                     appears in the list of questions with the inputted
                     information
                 </li>
+                <li>Added button to clear answers for a quiz question</li>
+                <li>Added ability to answer multiple choice questions</li>
             </ul>
             {
                 <img

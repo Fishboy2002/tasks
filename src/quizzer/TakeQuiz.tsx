@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question, QuestionType } from "./newQuestion";
 import { QuizQuestion } from "./QuizQuestion";
 import { Quiz } from "./Quizzer";
 
@@ -34,6 +34,9 @@ interface addQuestionProp {
     setOption: (newOption: string) => void;
 }
 function printQuestions(
+    quizes: Quiz[],
+    setQuizes: (newQuizes: Quiz[]) => void,
+    currQuiz: number,
     ques: Question,
     score: number,
     setScore: (newScore: number) => void
@@ -44,6 +47,9 @@ function printQuestions(
             <div>{ques.body}</div>
             <div>Worth {ques.points} points</div>
             <QuizQuestion
+                quizes={quizes}
+                setQuizes={setQuizes}
+                currQuiz={currQuiz}
                 ques={ques}
                 score={score}
                 setScore={setScore}
@@ -72,7 +78,8 @@ function makeQuestion(
                 options: options,
                 expected: expected,
                 points: points,
-                published: true
+                published: true,
+                answered: false
             }
         ]
     };
@@ -244,7 +251,14 @@ export function TakeQuiz({
         <div>
             {quizes[currQuiz].questions.map(
                 (ques: Question): JSX.Element =>
-                    printQuestions(ques, score, setScore)
+                    printQuestions(
+                        quizes,
+                        setQuizes,
+                        currQuiz,
+                        ques,
+                        score,
+                        setScore
+                    )
             )}
             {edit &&
                 addQuestion({
