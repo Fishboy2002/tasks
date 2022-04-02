@@ -117,4 +117,68 @@ describe("TakeQuiz Tests", () => {
             screen.getByText(/You have already answered this question/i)
         ).toBeInTheDocument();
     });
+    test("Score is updated when a question is answered", () => {
+        const typeDropdown = screen.getByRole("combobox", {
+            name: /Choose an answer/i
+        });
+        userEvent.selectOptions(typeDropdown, "Answer");
+        const endQuizButton = screen.getByRole("button", {
+            name: /End Quiz/i
+        });
+        endQuizButton.click();
+        expect(
+            screen.getByText(/You have currently scored 1 points/i)
+        ).toBeInTheDocument();
+    });
+    test("clearQuestions works, and the score is decreased", () => {
+        const typeDropdown = screen.getByRole("combobox", {
+            name: /Choose an answer/i
+        });
+        userEvent.selectOptions(typeDropdown, "Answer");
+        const endQuizButton = screen.getByRole("button", {
+            name: /End Quiz/i
+        });
+        endQuizButton.click();
+        const clearAnswersButton = screen.getAllByRole("button", {
+            name: /Clear Answers/i
+        });
+        clearAnswersButton[0].click();
+        expect(
+            screen.getByText(/You have currently scored 0 points/i)
+        ).toBeInTheDocument();
+        const takeQuizButton = screen.getAllByRole("button", {
+            name: /Take Quiz/i
+        });
+        takeQuizButton[0].click();
+        expect(
+            screen.getAllByText(/This question has not yet been answered/i)
+                .length >= 2
+        );
+    });
+    test("Quiz Questions can be deleted", () => {
+        const editQuestionButton = screen.getByRole("button", {
+            name: /Edit Questions/i
+        });
+        editQuestionButton.click();
+        const deleteQuestionButton = screen.getAllByRole("button", {
+            name: /Delete Question/i
+        });
+        deleteQuestionButton[0].click();
+        expect(screen.queryByText(/Test Question/i) === null);
+    });
+    test("Quiz Questions can be published/unpublished", () => {
+        const editQuestionButton = screen.getByRole("button", {
+            name: /Edit Questions/i
+        });
+        editQuestionButton.click();
+        const publishQuestionButton = screen.getAllByRole("button", {
+            name: "Publish/Unpublish Question"
+        });
+        publishQuestionButton[0].click();
+        expect(
+            screen.getByText(/Currently Published: false/i)
+        ).toBeInTheDocument();
+        publishQuestionButton[0].click();
+        expect(screen.getAllByText(/Currently Published: true/i).length >= 2);
+    });
 });
