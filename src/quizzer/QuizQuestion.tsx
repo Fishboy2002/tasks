@@ -60,7 +60,7 @@ export function QuizQuestion({
             {ques.answered
                 ? "You have already answered this question"
                 : "This question has not yet been answered"}
-            <Form.Group controlId="answers">
+            <Form.Group controlId="multipleAnswers">
                 <Form.Label>Choose an answer</Form.Label>
                 <Form.Select
                     value={choice}
@@ -92,7 +92,7 @@ export function QuizQuestion({
             {ques.answered
                 ? "You have already answered this question"
                 : "This question has not yet been answered"}
-            <Form.Group controlId="answers">
+            <Form.Group controlId="shortAnswers">
                 <Form.Label>Input your answer:</Form.Label>
                 <Form.Control
                     value={choice}

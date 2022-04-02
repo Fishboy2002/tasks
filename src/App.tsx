@@ -48,7 +48,7 @@ function App(): JSX.Element {
                     Questions
                 </li>
                 <li>Included tests to check if questions are displayed</li>
-                <li>Score is visible, but cannot be increased yet</li>
+                <li>Score is visible and can be increased</li>
                 <li>Added Test for checking if score is visible</li>
                 <li>
                     Quiz questions can be either multiple choice or short answer
@@ -64,8 +64,11 @@ function App(): JSX.Element {
                     information
                 </li>
                 <li>Added button to clear answers for a quiz question</li>
+                <li></li>
                 <li>Added ability to answer multiple choice questions</li>
+                <li>Added Test for answering multiple choice questions</li>
                 <li>Added ability to answer short answer questions</li>
+                <li>Added Test for answering short answer questions</li>
                 <li>Added ability to delete questions from a quiz</li>
                 <li>Added ability to publish or unpublish a question</li>
             </ul>

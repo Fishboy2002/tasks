@@ -85,4 +85,36 @@ describe("TakeQuiz Tests", () => {
         expect(screen.getByText(/Second Question Body/i)).toBeInTheDocument();
         expect(screen.getByText(/Worth 10 Points/i)).toBeInTheDocument();
     });
+    test("Multiple Choice Questions can be answered", () => {
+        const typeDropdown = screen.getByRole("combobox", {
+            name: /Choose an answer/i
+        });
+        expect(
+            screen.getAllByText(/This question has not yet been answered/i)
+                .length >= 2
+        );
+        userEvent.selectOptions(typeDropdown, "Answer");
+        expect(screen.getByText(/✔️/i)).toBeInTheDocument();
+        userEvent.selectOptions(typeDropdown, "First");
+        expect(screen.getAllByText(/❌/i).length >= 2);
+        expect(
+            screen.getByText(/You have already answered this question/i)
+        ).toBeInTheDocument();
+    });
+    test("Short Answer Questions can be answered", () => {
+        const answerBox = screen.getByRole("textbox", {
+            name: /Input your answer:/i
+        });
+        expect(
+            screen.getAllByText(/This question has not yet been answered/i)
+                .length >= 2
+        );
+        userEvent.type(answerBox, "Answer");
+        expect(screen.getByText(/✔️/i)).toBeInTheDocument();
+        userEvent.type(answerBox, "Wrong");
+        expect(screen.getAllByText(/❌/i).length >= 2);
+        expect(
+            screen.getByText(/You have already answered this question/i)
+        ).toBeInTheDocument();
+    });
 });

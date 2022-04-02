@@ -26,6 +26,17 @@ const INITIAL_QUIZES: Quiz[] = [
                 points: 1,
                 published: true,
                 answered: false
+            },
+            {
+                id: 6,
+                name: "Testing Score Question",
+                body: "For checking Score",
+                type: "short_answer_question",
+                options: [],
+                expected: "Answer",
+                points: 5,
+                published: true,
+                answered: false
             }
         ]
     },
