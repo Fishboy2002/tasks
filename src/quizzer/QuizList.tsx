@@ -11,28 +11,23 @@ interface setQuizProp {
     score: number;
     setScore: (newScore: number) => void;
 }
-function setAnswered(
-    question: Question,
-    score: number,
-    setScore: (newScore: number) => void
-): Question {
-    setScore(score - question.points);
-    return { ...question, answered: false };
-}
 function clearHelp(
     quizes: Quiz[],
-    quiz: Quiz,
     curr: Quiz,
     score: number,
     setScore: (newScore: number) => void
 ): Quiz {
+    const sum = curr.questions.reduce(
+        (currentTotal: number, currQ: Question) =>
+            currQ.answered ? currentTotal + currQ.points : currentTotal,
+        0
+    );
+    setScore(score - sum);
     return {
         ...curr,
         questions: curr.questions.map(
             (question: Question): Question =>
-                question.answered
-                    ? setAnswered(question, score, setScore)
-                    : question
+                question.answered ? { ...question, answered: false } : question
         )
     };
 }
@@ -47,9 +42,7 @@ function clearAnswers(
     setQuizes(
         quizes.map(
             (curr: Quiz): Quiz =>
-                curr === quiz
-                    ? clearHelp(quizes, quiz, curr, score, setScore)
-                    : curr
+                curr === quiz ? clearHelp(quizes, curr, score, setScore) : curr
         )
     );
 }

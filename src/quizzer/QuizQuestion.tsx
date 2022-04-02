@@ -89,8 +89,29 @@ export function QuizQuestion({
         </div>
     ) : (
         <div>
-            This Question can not yet be taken. Ignore this: {ques.body[0]},{" "}
-            {score}
+            {ques.answered
+                ? "You have already answered this question"
+                : "This question has not yet been answered"}
+            <Form.Group controlId="answers">
+                <Form.Label>Input your answer:</Form.Label>
+                <Form.Control
+                    value={choice}
+                    onChange={(event: ChangeEvent) =>
+                        setChoice(event.target.value)
+                    }
+                />
+            </Form.Group>
+            {correct(
+                {
+                    quizes,
+                    setQuizes,
+                    currQuiz,
+                    ques,
+                    score,
+                    setScore
+                },
+                choice
+            )}
         </div>
     );
 }

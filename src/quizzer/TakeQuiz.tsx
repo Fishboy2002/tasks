@@ -33,19 +33,71 @@ interface addQuestionProp {
     option: string;
     setOption: (newOption: string) => void;
 }
-function printQuestions(
+function removeQuesHelp(curr: Quiz, ques: Question): Quiz {
+    return {
+        ...curr,
+        questions: curr.questions.filter(
+            (currQues: Question): boolean => currQues != ques
+        )
+    };
+}
+function removeQuestion(
     quizes: Quiz[],
     setQuizes: (newQuizes: Quiz[]) => void,
     currQuiz: number,
     ques: Question,
     score: number,
     setScore: (newScore: number) => void
+): void {
+    if (ques.answered) {
+        setScore(score - ques.points);
+    }
+    setQuizes(
+        quizes.map(
+            (curr: Quiz): Quiz =>
+                curr === quizes[currQuiz] ? removeQuesHelp(curr, ques) : curr
+        )
+    );
+}
+function publishHelp(curr: Quiz, ques: Question): Quiz {
+    return {
+        ...curr,
+        questions: curr.questions.map(
+            (currQ: Question): Question =>
+                currQ === ques
+                    ? { ...currQ, published: !currQ.published }
+                    : currQ
+        )
+    };
+}
+function changePublish(
+    quizes: Quiz[],
+    setQuizes: (newQuizes: Quiz[]) => void,
+    currQuiz: number,
+    ques: Question
+): void {
+    setQuizes(
+        quizes.map(
+            (curr: Quiz): Quiz =>
+                curr === quizes[currQuiz] ? publishHelp(curr, ques) : curr
+        )
+    );
+}
+function printQuestions(
+    quizes: Quiz[],
+    setQuizes: (newQuizes: Quiz[]) => void,
+    currQuiz: number,
+    ques: Question,
+    score: number,
+    setScore: (newScore: number) => void,
+    edit: boolean
 ): JSX.Element {
     return (
         <div>
             <div>{ques.name}</div>
             <div>{ques.body}</div>
             <div>Worth {ques.points} points</div>
+            <div>Currently Published: {ques.published.toString()}</div>
             <QuizQuestion
                 quizes={quizes}
                 setQuizes={setQuizes}
@@ -54,6 +106,33 @@ function printQuestions(
                 score={score}
                 setScore={setScore}
             ></QuizQuestion>
+            {edit && (
+                <div>
+                    <button
+                        style={{ backgroundColor: "red" }}
+                        onClick={() =>
+                            removeQuestion(
+                                quizes,
+                                setQuizes,
+                                currQuiz,
+                                ques,
+                                score,
+                                setScore
+                            )
+                        }
+                    >
+                        Delete Question
+                    </button>
+                    <button
+                        style={{ backgroundColor: "lightskyblue" }}
+                        onClick={() =>
+                            changePublish(quizes, setQuizes, currQuiz, ques)
+                        }
+                    >
+                        Publish/Unpublish Question
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
@@ -243,7 +322,7 @@ export function TakeQuiz({
     const [name, setName] = useState<string>("");
     const [body, setBody] = useState<string>("");
     const [type, setType] = useState<QuestionType>("multiple_choice_question");
-    const [options, setOptions] = useState<string[]>([]);
+    const [options, setOptions] = useState<string[]>([""]);
     const [expected, setExpected] = useState<string>("");
     const [points, setPoints] = useState<number>(0);
     const [option, setOption] = useState<string>("");
@@ -257,7 +336,8 @@ export function TakeQuiz({
                         currQuiz,
                         ques,
                         score,
-                        setScore
+                        setScore,
+                        edit
                     )
             )}
             {edit &&

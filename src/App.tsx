@@ -65,6 +65,9 @@ function App(): JSX.Element {
                 </li>
                 <li>Added button to clear answers for a quiz question</li>
                 <li>Added ability to answer multiple choice questions</li>
+                <li>Added ability to answer short answer questions</li>
+                <li>Added ability to delete questions from a quiz</li>
+                <li>Added ability to publish or unpublish a question</li>
             </ul>
             {
                 <img
