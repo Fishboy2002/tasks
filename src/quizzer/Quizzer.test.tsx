@@ -20,7 +20,7 @@ describe("Quizzer and QuizList Tests", () => {
         expect(screen.getByText(/Test Quiz for Testing/i)).toBeInTheDocument();
     });
     test("The test quiz length is displayed", () => {
-        expect(screen.getAllByText(/1/i).length >= 1);
+        expect(screen.getAllByText(/2/i).length >= 1);
     });
     test("The Score is Displayed", () => {
         expect(
