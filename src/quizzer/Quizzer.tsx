@@ -14,7 +14,7 @@ const INITIAL_QUIZES: Quiz[] = [
     {
         title: "Testing Quiz",
         description: "Test Quiz for Testing",
-        length: 1,
+        length: 2,
         questions: [
             {
                 id: 5,
