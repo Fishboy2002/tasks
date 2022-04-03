@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { Question } from "./newQuestion";
 import { Quiz } from "./Quizzer";
 
 interface setQuizProp {
@@ -8,12 +9,50 @@ interface setQuizProp {
     setCurrQuiz: (newQuiz: number) => void;
     setQuizes: (newQuizes: Quiz[]) => void;
     score: number;
+    setScore: (newScore: number) => void;
 }
+function clearHelp(
+    quizes: Quiz[],
+    curr: Quiz,
+    score: number,
+    setScore: (newScore: number) => void
+): Quiz {
+    const sum = curr.questions.reduce(
+        (currentTotal: number, currQ: Question) =>
+            currQ.answered ? currentTotal + currQ.points : currentTotal,
+        0
+    );
+    setScore(score - sum);
+    return {
+        ...curr,
+        questions: curr.questions.map(
+            (question: Question): Question =>
+                question.answered ? { ...question, answered: false } : question
+        )
+    };
+}
+
+function clearAnswers(
+    quizes: Quiz[],
+    quiz: Quiz,
+    setQuizes: (newQuizes: Quiz[]) => void,
+    score: number,
+    setScore: (newScore: number) => void
+) {
+    setQuizes(
+        quizes.map(
+            (curr: Quiz): Quiz =>
+                curr === quiz ? clearHelp(quizes, curr, score, setScore) : curr
+        )
+    );
+}
+
 export function QuizList({
     quizes,
     setCurrQuiz,
     setQuizes,
-    score
+    score,
+    setScore
 }: setQuizProp): JSX.Element {
     const [edit, setEdit] = useState<boolean>(false);
     const [title, setTitle] = useState<string>("");
@@ -40,6 +79,14 @@ export function QuizList({
                     description: {quiz.description}
                 </div>
                 <div>Total number of Questions: {quiz.length}</div>
+                <button
+                    style={{ backgroundColor: "royalblue" }}
+                    onClick={() =>
+                        clearAnswers(quizes, quiz, setQuizes, score, setScore)
+                    }
+                >
+                    Clear Answers
+                </button>
                 <button
                     style={{ backgroundColor: "gold" }}
                     onClick={() =>

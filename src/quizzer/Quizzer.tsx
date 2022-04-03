@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Question } from "../interfaces/question";
+import { Question } from "./newQuestion";
 import { QuizList } from "./QuizList";
 import { TakeQuiz } from "./TakeQuiz";
 
@@ -21,10 +21,22 @@ const INITIAL_QUIZES: Quiz[] = [
                 name: "Test Question",
                 body: "Testing Purposes",
                 type: "multiple_choice_question",
-                options: [],
-                expected: "",
+                options: ["First", "Second", "Third", "Answer"],
+                expected: "Answer",
                 points: 1,
-                published: true
+                published: true,
+                answered: false
+            },
+            {
+                id: 6,
+                name: "Testing Score Question",
+                body: "For checking Score",
+                type: "short_answer_question",
+                options: [],
+                expected: "Answer",
+                points: 5,
+                published: true,
+                answered: false
             }
         ]
     },
@@ -49,6 +61,7 @@ export function Quizzer(): JSX.Element {
                     setCurrQuiz={setCurrQuiz}
                     setQuizes={setQuizes}
                     score={score}
+                    setScore={setScore}
                 ></QuizList>
             ) : (
                 <TakeQuiz
